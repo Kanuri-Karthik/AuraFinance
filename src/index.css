@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Luminescent Vault Light Theme (Default) */
+    --color-bg: 248 250 252; /* Slate 50 */
+    --color-surface: 255 255 255; /* White */
+    --color-text-main: 15 23 42; /* Slate 900 */
+    --color-text-muted: 100 116 139; /* Slate 500 */
+    --color-primary: 16 185 129; /* Emerald 600 */
+    --color-primary-hover: 4 120 87; /* Emerald 700 */
+    --color-secondary: 99 102 241; /* Indigo 500 */
+    --color-accent: 14 165 233; /* Sky 500 */
+    --color-danger: 239 68 68;
+    --color-border: rgba(0, 0, 0, 0.1);
+    
+    /* Neumorphism Shadows - Premium Light */
+    --shadow-dark: rgba(0, 0, 0, 0.05); /* very light shadow */
+    --shadow-light: rgba(255, 255, 255, 0.8);
+    
+    /* Gradients */
+    --grad-primary: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(203, 213, 225, 0.5); /* Slate 300 / 50% */
+  }
+
+  /* MIDNIGHT: Ultra-deep late night (10pm - 6am) */
+  .midnight {
+    --color-bg: 2 6 23; /* Deepest blue-black */
+    --color-surface: 15 23 42;
+    --color-text-main: 226 232 240;
+    --color-text-muted: 100 116 139;
+    --color-primary: 96 165 250;
+    --color-primary-hover: 147 197 253;
+    --color-secondary: 167 139 250;
+    --color-accent: 52 211 153;
+    --color-danger: 252 165 165;
+    --color-border: rgba(255, 255, 255, 0.04);
+    --shadow-dark: #020617;
+    --shadow-light: #0f172a;
+    --grad-primary: linear-gradient(135deg, #60a5fa, #a78bfa);
+    --glass-bg: rgba(15, 23, 42, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.05);
+  }
+}
+
+:root {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+@layer components {
+  /* Dynamic Neumorphic Buttons */
+  .btn-primary {
+    @apply bg-primary hover:bg-primaryHover text-white px-5 py-2.5 rounded-xl font-medium transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2;
+  }
+  
+  .btn-soft {
+    @apply bg-surface text-textMain px-5 py-2.5 rounded-xl font-medium transition-all shadow-soft active:shadow-soft-inner;
+  }
+
+  /* Glass Panels overriding soft neumorphism where appropriate */
+  .glass-panel {
+    @apply backdrop-blur-xl border border-white/60 transition-colors duration-300;
+    background-color: var(--glass-bg);
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+  }
+
+  .bg-surface-container, 
+  .bg-surface-container-low, 
+  .bg-surface-container-lowest,
+  .bg-surface-container-high, 
+  .bg-surface-container-highest,
+  .bg-surface-variant {
+    @apply backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.03)];
+  }
+
+  .nav-item {
+    @apply flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 text-textMuted hover:bg-surface hover:text-textMain hover:shadow-soft;
+  }
+
+  .nav-item.active {
+    @apply bg-primary/10 text-primary border border-primary/20 shadow-none;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .translate-z-10 {
+    transform: translateZ(10px);
+  }
+
+  .translate-z-20 {
+    transform: translateZ(20px);
+  }
+}
+
+/* Custom scrollbar optimized for theme switching */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5); 
+}
