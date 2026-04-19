@@ -9,5 +9,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Emergency Cache Buster for PWA - Force unregister
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          let hasCleared = false;
+          for(let registration of registrations) {
+            registration.unregister();
+            hasCleared = true;
+          }
+          if (hasCleared && !window.location.search.includes('cleared')) {
+            window.location.replace(window.location.href + (window.location.search ? '&' : '?') + 'cleared=1');
+          }
+        });
+      }
+    </script>
   </body>
 </html>
