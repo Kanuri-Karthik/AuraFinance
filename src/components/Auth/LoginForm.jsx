@@ -112,10 +112,10 @@ const LoginForm = ({ onLoginSuccess, onToggleAuth }) => {
         </div>
       </div>
 
-      <AnimatedButton
+      <button
         type="button"
         onClick={handleGoogleSignIn}
-        className="w-full justify-center !bg-white/5 hover:!bg-white/10 border border-white/10 text-text z-10"
+        className="w-full justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-slate-800 z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl font-medium transition-colors duration-300"
         disabled={isLoading}
       >
         <div className="flex items-center justify-center gap-3">
@@ -127,7 +127,7 @@ const LoginForm = ({ onLoginSuccess, onToggleAuth }) => {
           </svg>
           Google
         </div>
-      </AnimatedButton>
+      </button>
 
       <p className="mt-8 text-center text-sm text-textMuted z-10 relative">
         Don't have an account?{' '}

@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const BACKEND_URL = `http://${window.location.hostname}:5000/api/auth`;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || `http://${window.location.hostname}:5000/api/auth`;
 
   const signup = async (email, password) => {
     try {
